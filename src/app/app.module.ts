@@ -6,7 +6,8 @@ import { TodoFormComponent } from './Components/todo-form/todo-form.component';
 import {  TodosComponent} from './Components/todos/todos.component';
 
 import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
+//import { environment } from '../environments/environment';
+import { environment} from '../environments/environment.prod'
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { FormsModule} from '@angular/forms'

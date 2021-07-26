@@ -33,7 +33,9 @@ export class TodoService {
    }
 
    addTodo(todo: Todo){
+     todo.completed= false;
       this.todosCollection.add(todo);
+      
    }
 
 
@@ -45,6 +47,11 @@ export class TodoService {
    updateTodo(todo: Todo){
     this.todoDoc = this.db.doc(`todos/${todo.id}`);
     this.todoDoc.update(todo);
+   }
+
+   completedTodo(todo: Todo){
+    this.todoDoc = this.db.doc(`todos/${todo.id}`);
+    this.todoDoc.update({completed : true})
    }
 
 

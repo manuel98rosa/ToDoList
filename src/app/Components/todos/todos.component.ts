@@ -12,6 +12,8 @@ export class TodosComponent implements OnInit {
   todos: any = [];
   editingTodo: Todo;
   editing: boolean = false ;
+  
+  
 
   constructor(public  todoService:TodoService) { }
 
@@ -36,4 +38,8 @@ export class TodosComponent implements OnInit {
    this.editing = false;
   }
 
+  toggleDone(todo: Todo){
+   this.todoService.completedTodo(todo);
+   
+  }
 }
