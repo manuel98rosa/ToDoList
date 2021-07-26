@@ -1,0 +1,67 @@
+<div *ngIf="todos.length > 0; else noTodos ">
+    <ul class="list-group">
+        <li *ngFor="let t of todos" class="list-group-item">
+            <h3> {{t.name}} </h3>
+           <p> {{t.description}} </p>
+            
+           
+
+           <div *ngIf="t.completed==true;">
+            <h5> Tarea completada! </h5>
+            <button class="btn btn-warning">
+                incompleta
+            </button>
+            
+            <button (click)=" deleteTodo(t)"class="btn btn-danger">
+                Delete
+            </button>
+            <button (click)="editTodo(t)"class="btn btn-primary">
+                Edit
+            </button>
+          </div>
+          <div *ngIf="t.completed==false;  ">
+            <h5> Tarea Incompleta! </h5>
+            <button class="btn btn-success">
+                Tarea Completada!
+            </button>
+            
+            <button (click)=" deleteTodo(t)"class="btn btn-danger">
+                Delete
+            </button>
+            <button (click)="editTodo(t)"class="btn btn-primary">
+                Edit
+            </button>
+          </div>
+
+            <!--<button (click)=" deleteTodo(t)"class="btn btn-danger">
+                Delete
+            </button>
+            <button (click)="editTodo(t)"class="btn btn-primary">
+                Edit
+            </button>
+        -->
+          <div *ngIf="editing && editingTodo.id == t.id">
+            <form (ngSubmit)="updateTodo()">
+               <input type="text " name="name" [(ngModel)]="editingTodo.name"> 
+               <input type="text " name="description" [(ngModel)]="editingTodo.description"> 
+               <button type="submit">
+                   Update
+               </button>
+            </form>
+          </div>
+          
+
+         
+
+        </li>
+
+      
+    </ul>
+    
+</div>
+
+
+
+<ng-template #noTodos >
+    <p> No hay ninguna Tarea </p>
+</ng-template>
